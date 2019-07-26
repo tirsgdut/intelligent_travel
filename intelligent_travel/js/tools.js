@@ -1,4 +1,4 @@
-define(function () {
+// define(function () {
     // 判断类型
     function getType(obj, type) {
         return Object.prototype.toString.call(obj).match(/\[object ([a-zA-Z]*)\]/)[1] === type;
@@ -215,10 +215,10 @@ define(function () {
         return time_str;
     }
 
-    return {
-		getType: getType,
-		EventUtil: EventUtil,
-		verificat: verificat,
-		formatTime: formatTime
-    }
-});
+    // return {
+	// 	getType: getType,
+	// 	EventUtil: EventUtil,
+	// 	verificat: verificat,
+	// 	formatTime: formatTime
+    // }
+// });

@@ -14,15 +14,66 @@
     <div class="map-container" id="container"></div> 
     <!-- 搜索框 -->
     <div class="search-block">
-        <!-- <div class="red-circle"></div> -->
-        <input class="departure-input" placeholder="出发点">
-        <input class="destination-input" placeholder="终点">
-        <input type="button" class="search-button">
+        <div class="select-visitor-contanier">
+            <select class="visitor-type" style="text-align-last:center;">
+                <option value="person" class="visitor-type-detail" hidden style="color:rgb(184,184,184);">旅客类型&nbsp&nbsp&nbsp∨</option>
+                <option value="person" class="visitor-type-detail">个人出行</option>
+                <option value="business" class="visitor-type-detail">商务办公</option>
+                <option value="family" class="visitor-type-detail">家庭出行</option>
+                <option value="none" class="visitor-type-detail">其他</option>
+            </select>
 
+                    
+        </div>
+
+        <div class="input-part-container">
+            <div class="arrow-contanier"></div>
+    
+            <div class="red-circle circle1" ></div>
+            <input class="departure-input" placeholder="请输入起点">
+            <div class="cancel" id="cancel-start"></div>
+            <div class="line"></div>
+
+            <div class="green-circle circle2"></div>
+            <input class="destination-input" placeholder="请输入终点">
+            <div class="cancel" id="cancel-end"></div>
+            <div class="line"></div>
+        </div>
         
+        <div class="button-container">
+            <div class="clear-route-button">清除路线</div>
+
+            <input type="button" class="search-button" value="搜索">
+        </div>
     </div>
 
+    <!-- 模糊搜索展示 暂时不知道怎么做 -->
+    <div class="fuzzy-search">
+
+    </div>
+
+
+    <!-- 地铁搜索结果 -->
+    <div class="search-subway-result-contanier">
+        <div class="recommendation-choose-container">
+            <ul class="recommendation-choose-way">
+                <li class="recommendation-choose-way-detail way1">推荐</li>
+                <li class="recommendation-choose-way-detail way2">用时少</li>
+                <li class="recommendation-choose-way-detail way3">换成少</li>
+                <li class="recommendation-choose-way-detail way4">价格优</li>
+            </ul>
+        </div>
+        <!-- 搜索结果展示，暂时不知道该怎么做待定以下 -->
+        <!-- <div class="show-subway-search-reslut">
+
+        </div> -->
+    </div>
+
+    
+
 <script type="text/javascript" src = "../js/intelligent_travel.js"></script>
+<script type="text/javascript" src = "../js/search_part.js"></script>
+<script type="text/javascript" src = "../js/tools.js"></script>
 
 </body>  
 </html>

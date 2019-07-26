@@ -44,6 +44,19 @@
          }
     }
 
+       
+// var point1 = new BMap.Point(113.25705998, 23.11334599);    
+// var marker = new BMap.Marker(point1);        // 创建标注    
+// map.addOverlay(marker);  
+
+// var point1 = new BMap.Point(113.25705998, 23.11334599);    
+// var marker = new BMap.Marker(point1);        // 创建标注    
+// map.addOverlay(marker);  
+
+// var point1 = new BMap.Point(113.25705998, 23.11334599);    
+// var marker = new BMap.Marker(point1);        // 创建标注    
+// map.addOverlay(marker);  
+
 //     return{
 //         showroute:showroute
 //     }

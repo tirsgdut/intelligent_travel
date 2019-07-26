@@ -1,5 +1,5 @@
 html{
-    height: 120rem;
+    height: 100%;
     width: 100%;
     font-size: 16px;
 }
@@ -16,29 +16,266 @@ body{
     width: 100%;
 }
 
+.select-visitor-contanier{
+    position: relative;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 0.8rem;
+    
+    height: 13%;
+    width: 90%;
+}
+
 .search-block{
     position: fixed;
-    top: 1.5rem;
+    top: 3%;
     left: 1.5rem;
+    z-index: 1;
     
-    height: 25%;
-    width: 25%;
-    background-color: green;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+    height: 29%;
+    width: 23%;
+
+    background-color :rgb(109,92,232);
+
+    list-style: none;
 }
 
+.visitor-type{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 
+    border: 0;
+  
+    height: 100%;
+    width: 100%;
 
-.departure-input{
-    height: 1rem;
-    width: 50%;
+    appearance:none;  
+    -moz-appearance:none;  
+    -webkit-appearance:none;   
+    outline:none;
 }
 
-.destination-input{
-    height: 1rem;
-    width: 50%;
+option{
+    color:rgb(184,184,184);
+    
+    text-align:center;  
+}
+
+.shrink{
+    position: absolute;
+    right: 2px;
+    top: 0;
+
+    height: 100%;
+    width: 6%;
+
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    
+    
+}
+
+.input-part-container{
+    margin-top: 6%;
+    margin-left: 5%;
+
+    height: 35%;
+    width: 90%;
+}
+
+.arrow-contanier{
+    float: left;
+    
+    height: 100%;
+    width: 13%;
+  
+    background-image: url(../images/transfor.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
+}
+
+.red-circle,.green-circle{
+    float: left;
+
+    height: 47%;
+    width: 10%;
+}
+
+.circle1{
+    background-image: url(../images/red_circle.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+}
+
+.circle2{
+    background-image: url(../images/green_circle.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+}
+
+.departure-input,.destination-input{
+    display: block;
+    float: left;
+
+    border: 0;
+
+    padding: 0;
+
+    height: 47%;
+    width: 70%;
+
+    background-color :rgb(109,92,232);
+ 
+    outline: none;
+
+    opacity: 0.35;
+}
+
+input::-webkit-input-placeholder {
+    /* placeholder颜色  */
+    color: #ffffff;
+}
+
+.line{
+    float: left;
+
+    margin-left: 10%;
+
+    height: 3%;
+    width: 77%;
+
+    background-color: white;
+
+    opacity: 0.25;
+}
+
+.button-container{
+    position: relative;
+
+    margin-left: 16.7%;
+    margin-top: 6%;
+
+    height: 18%;
+    width: 80%;
+}
+
+.clear-route-button{
+    height: 100%;
+    width: 30%;
+
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+    line-height: 37.16px;
+}
+
+.cancel{
+    float: left;
+
+    height: 48%;
+    width: 7%;
+
+    cursor: pointer;
+    
+    background-image: url(../images/clear.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
 }
 
 .search-button{
-    height: 1rem;
-    width: 10%;
+    position: absolute;
+    top: 0;
+    right: 1rem;
+
+    outline: none;
+    
+    border: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgb(89,73,204);
+
+    color:white;
+    cursor: pointer;
+    
+    height: 100%;
+    width: 28%;
+
+    text-align: center;
+}
+
+.fuzzy-search{
+    display: none;
+    position: fixed;
+    top: 31%;  
+    left: 1.5rem;
+
+    height: 62%;
+    width: 23%;
+
+    background-color: blanchedalmond;
+}
+
+.search-subway-result-contanier{
+    display: none;
+    position: fixed;
+    top: 31%;  
+    left: 1.5rem;
+
+    height: 62%;
+    width: 23%;
+
+    background-color: blanchedalmond;
+}
+
+.recommendation-choose-container{
+    height: 12%;
+    width: 100%;
+}
+
+.recommendation-choose-way{
+    height: 100%;
+    width: 100%;
+
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+.recommendation-choose-way-detail{
+    float: left;
+
+    margin-top: 5%;
+
+    height: 45%;
+    width: 24.5%;
+
+    text-align: center;
+    font-size: 100%;
+
+    cursor: pointer;
+
+    list-style: none;
+}
+
+.way1,.way2,.way3{
+    border-right: 1.5px solid rgb(195,195,195);
 }
