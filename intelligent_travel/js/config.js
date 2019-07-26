@@ -1,14 +1,11 @@
 requirejs.config({
   baseUrl: '',
   paths: {
+    jquery: '../js/jquery-3.3.1.min',
+    index: '../js/index',
     tools: '../js/tools',
-	index: '../js/index'
+    intelligent_travel: "../js/intelligent_travel"
   }
 });
-requirejs(['tools'],function(getType){
-	console.log(getType.getType);
-});
 
-requirejs(['index'],function(b){
-	console.log(b);
-});
+requirejs(['intelligent_travel']);
