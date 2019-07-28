@@ -9,6 +9,7 @@ body{
     width: 100%;
     margin: 0px;
     padding: 0px;
+
 }
 
 .map-container{
@@ -29,6 +30,8 @@ body{
     
     height: 13%;
     width: 90%;
+
+    
 }
 
 .search-block{
@@ -44,7 +47,7 @@ body{
 
     height: 29%;
     width: 23%;
-
+   
     background-color :rgb(109,92,232);
 
     list-style: none;
@@ -235,20 +238,49 @@ input::-webkit-input-placeholder {
 }
 
 .search-subway-result-contanier{
-    display: none;
+    display: block;
     position: fixed;
+    overflow: auto;
+
     top: 31%;  
     left: 1.5rem;
 
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+
     height: 62%;
     width: 23%;
+    
 
-    background-color: blanchedalmond;
+    -webkit-box-shadow: 0px 0px 8px  #999;
+    -moz-box-shadow: 0px 0px 8px  #999;
+    box-shadow: 0px 0px 8px  #999;
+
+    background-color: rgb(245,245,245);
+}
+
+.search-subway-result-contanier::-webkit-scrollbar {
+    width: 7px;    
+    /*height: 4px;*/
+}
+.search-subway-result-contanier::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(184,184,184);
+}
+.search-subway-result-contanier::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-bottom-right-radius: 8px;  
+    background: rgba(235,235,235);
 }
 
 .recommendation-choose-container{
+    position: relative;
+
     height: 12%;
     width: 100%;
+
+    color: rgb(38,38,38);
 }
 
 .recommendation-choose-way{
@@ -278,4 +310,251 @@ input::-webkit-input-placeholder {
 
 .way1,.way2,.way3{
     border-right: 1.5px solid rgb(195,195,195);
+}
+
+.show-subway-search-result{
+    position: relative;
+
+    display: none;
+
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+    height: auto;
+    width: 95%;
+    
+    cursor: pointer;
+
+    margin: auto;
+
+}
+
+.sperate-line{
+    position: absolute;
+    bottom: 0;
+    right: 12.5%;
+
+    height: 2.1px;
+    width: 75%;
+
+    background-color: rgb(230,230,230);
+
+    margin: auto;
+}
+
+
+
+.subway-route-show{
+    margin: auto;
+    padding-top: 5%;
+    padding-left: 0;
+   
+    height: auto;
+    width: 87%;
+
+    color: rgb(77,77,77);
+}
+
+.subway-information-show{
+    margin: auto;
+    margin-top: 8px;
+    padding-top: 5%;
+    padding-left: 0;
+    display: block;
+    padding-top: 0;
+    height: 25px;
+    width: 87%;
+    color: rgb(77,77,77);
+}
+
+.subway-route-show{
+    font-size: 13px;
+}
+
+.information_li{
+    float: left;
+
+    height: 70%;
+
+    list-style: none;
+    font-size: 13px;
+    color: rgb(77,77,77);
+}
+
+.kilomile{
+    width: 20%;
+}
+
+.time,.price{
+    width: 18%;
+}
+
+.walk{
+    width: 28%; 
+}
+
+.time,.kilomile,.walk{
+    border-right: 1.5px solid rgb(77,77,77);
+}
+
+.convenient_type-container{
+    height: 23px;
+    width: 87%;
+
+    padding-bottom: 10px;
+}
+
+.convenient_type{
+    display: none;
+
+    margin-left: 6.5%;
+
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    
+    height: 100%;
+    width: 15%;
+
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    line-height: 23px;
+
+    background-color: rgb(110,92,236);
+}
+
+.set-up-point{
+    margin-left: 2%;
+
+    height: 23px;
+    width: 50%;
+
+    color: rgb(77,77,77);
+    font-size: 12px;
+    line-height: 23px;
+}
+
+.set-up-point,.convenient_type{
+    float: left;
+}
+
+.open-detail-arrow{
+    position: absolute;
+    top: 50%;
+    right: 0;
+
+    margin-top: -6px;
+
+    height: 16px;
+    width: 16px;
+
+    background-image: url(../images/xiala.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%;
+}
+
+.demonstrate-detail-travel-way{
+    margin: auto;
+    clear:both;
+    
+    height: auto;
+    width: 95%;
+
+    font-size: 0;
+}
+
+.start-site{
+    margin: auto;
+
+    height: 100%;
+    width: 87%;
+}
+
+.notice-set-up-icon{
+    float: left;
+    height: 20px;
+    width: 20px;
+
+    border-radius:50px;
+    
+    text-align: center;
+    color: #ffffff;
+    line-height: 20px;
+    font-size: 12px;
+
+    background-color: rgb(110,92,236);
+}
+
+.start-site-name{
+    float: left;
+
+    margin-left: 4px;
+
+    height: 20px;
+    width: 70%;
+
+    color: rgb(77,77,77);
+    line-height: 20px;
+    font-size: 12px;
+}
+
+.go-to-site-route{
+    clear:both;
+    display: block;
+
+    margin-left: 24px;
+    height: 20px;
+    width: 70%;
+
+    line-height: 20px;
+    color: rgb(78,78,78);
+    font-size: 11px;
+}
+
+.place-photo-position{ 
+    display: inline-block;
+
+    height: 80px;
+    width: 24px;
+
+    background-image: url(../images/subway.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%;
+
+    vertical-align:top;
+}
+
+.demonstrate-subway-detail-informations{
+    display: inline-block;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    height: 80px;
+    width: 91%;
+
+    background-color: rgb(198,222,208);
+
+    vertical-align: top;
+}
+
+.subway-name{
+    height: 20px;
+    width: 100%;
+
+    
+    
+    
+    font-size: 12px;
+    line-height: 20px;
+
+    
 }

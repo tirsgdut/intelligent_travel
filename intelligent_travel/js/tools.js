@@ -1,16 +1,15 @@
-// define(function () {
+define(function () {
     // 判断类型
     function getType(obj, type) {
         return Object.prototype.toString.call(obj).match(/\[object ([a-zA-Z]*)\]/)[1] === type;
     }    
 
     //事件监听/解除事件工具类
-    var EventUtil = {
-        
+    var EventUtil = {    
         addHandler: (function() {
             if(window.addEventListener) {
                 return function() {
-                    arguments[0].addEventListener(arguments[1, arguments[2], false]);
+                    arguments[0].addEventListener(arguments[1], arguments[2], false);
                 };
             } else if(window.attachEvent) {
                 return function() {
@@ -215,10 +214,10 @@
         return time_str;
     }
 
-    // return {
-	// 	getType: getType,
-	// 	EventUtil: EventUtil,
-	// 	verificat: verificat,
-	// 	formatTime: formatTime
-    // }
-// });
+    return {
+		getType: getType,
+		EventUtil: EventUtil,
+		verificat: verificat,
+		formatTime: formatTime
+    }
+});

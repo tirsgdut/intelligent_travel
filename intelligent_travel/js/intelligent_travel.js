@@ -7,7 +7,6 @@
     map.centerAndZoom(point, 15);
     map.enableScrollWheelZoom(true);
 
-    var position;//JSON数组用来接受传过来的坐标信息
     $(function() {
         $(".search-button").click(function() {
            // console.log($(".departure-input").val())
@@ -17,31 +16,66 @@
             destination: $(".destination-input").val()
            
            }, function(data, textStatus) {
-              console.log(data);
-              position = data;  
-              showroute(position);                   
+                var position;//JSON数组用来接受传过来的坐标信息
+                console.log(data);
+                position = data;  
+                showroute(position);                   
            })
         });
     })
       
-    function showroute(position){
-        console.log("sfeasasafa" + position);
+    function showroute(position){       
         var array_store_instance = new Array(position.length);//用来存储多个创建的实例
 
         for(var i = 0; i < position.length; i++){   
             for(var j = 0; j<array_store_instance.length; j++){
-                array_store_instance[j] = new BMap.TransitRoute(map, { 
-                    renderOptions: { 
-                        map: map, 
-                        autoViewport: true 
-                } 
-                });
+                
+                if(j == 0){              
+                    array_store_instance[j] = new BMap.TransitRoute(map, { 
+                        renderOptions: { 
+                            map: map, 
+                            autoViewport: true
+                        },
+                        onMarkersSet:function(routes) {                            
+                            map.removeOverlay(routes[1].marker);//删除终点
+                        }
+                    });
+                }
+                
+                if(j != 0 && j != array_store_instance.length){
+                    array_store_instance[j] = new BMap.TransitRoute(map, { 
+                        renderOptions: { 
+                            map: map, 
+                            
+                        },
+                        onMarkersSet:function(routes) {
+                            map.removeOverlay(routes[0].marker); //删除起点
+                            map.removeOverlay(routes[1].marker);//删除终点
+                        }
+                    });
+                }
+
+                if(j == array_store_instance.length - 1){
+                    array_store_instance[j] = new BMap.TransitRoute(map, { 
+                        renderOptions: { 
+                            map: map, 
+                            autoViewport: true
+                        },
+                        onMarkersSet:function(routes) {                            
+                            map.removeOverlay(routes[0].marker);//删除起点
+                        }
+                    });
+                }
             }
         }
 
         for(var i = 0; i<array_store_instance.length; i++){
-             array_store_instance[i].search(new BMap.Point(position[i].start_x,position[i].start_y),new BMap.Point(position[i].end_x,position[i].end_y));
-         }
+             array_store_instance[i].search(new BMap.Point(position[i].start_x,position[i].start_y),new BMap.Point(position[i].end_x,position[i].end_y));            
+        }
+        
+        var allOverlay = map.getOverlays();
+        console.log(allOverlay.length);
+        console.log(allOverlay);
     }
 
        
