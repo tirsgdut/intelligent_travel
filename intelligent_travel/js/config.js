@@ -5,10 +5,13 @@ requirejs.config({
     index: '../js/index',
     tools: '../js/tools',
     intelligent_travel: "../js/intelligent_travel",
-    search_part: "../js/search_part"
+    search_part: "../js/search_part",
+    addcontrol: "../js/addcontrol"
   }
 });
 
 requirejs(['intelligent_travel']);
 
 requirejs(['search_part']);
+
+requirejs(['addcontrol']);

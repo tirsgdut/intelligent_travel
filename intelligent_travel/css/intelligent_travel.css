@@ -12,6 +12,26 @@ body{
 
 }
 
+.control-sperate-line{
+    position: absolute;
+    bottom: 57px;
+    right: 25px;
+
+    height: 2px;
+    width: 30px;
+
+    background-color: rgb(230,230,230);
+}
+
+.BMap_cpyCtrl {
+    display:none;
+}
+
+
+.anchorBL{
+    display:none;
+}
+
 .map-container{
     height:100%;
     width: 100%;
@@ -38,7 +58,7 @@ body{
     position: fixed;
     top: 3%;
     left: 1.5rem;
-    z-index: 1;
+    z-index: 3;
     
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -85,10 +105,7 @@ option{
     width: 6%;
 
     border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-
-    
-    
+    border-bottom-right-radius: 5px;    
 }
 
 .input-part-container{
@@ -172,9 +189,9 @@ input::-webkit-input-placeholder {
     position: relative;
 
     margin-left: 16.7%;
-    margin-top: 6%;
+    margin-top: 18px;
 
-    height: 18%;
+    height: 32px;
     width: 80%;
 }
 
@@ -185,7 +202,9 @@ input::-webkit-input-placeholder {
     font-size: 1rem;
     color: white;
     text-align: center;
-    line-height: 37.16px;
+    line-height: 32px;
+
+    cursor: pointer;
 }
 
 .cancel{
@@ -206,6 +225,7 @@ input::-webkit-input-placeholder {
     position: absolute;
     top: 0;
     right: 1rem;
+    z-index: 2;
 
     outline: none;
     
@@ -225,20 +245,63 @@ input::-webkit-input-placeholder {
     text-align: center;
 }
 
+.filled-container{
+    position: absolute;
+    left: 1.5rem;
+    top: 31%;
+    z-index: 2;
+
+    height: 1%;
+    width: 23%;
+
+    border: 0;
+    
+    background-color:white;
+}
+
 .fuzzy-search{
     display: none;
     position: fixed;
-    top: 31%;  
+    top: 32%;  
     left: 1.5rem;
+    z-index: 2;
 
-    height: 62%;
+    height: auto;
     width: 23%;
 
-    background-color: blanchedalmond;
+    background-color:rgb(245,245,245);
+
+    font-size: 0;
+
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+    -webkit-box-shadow: 0px 0px 8px  #999;
+    -moz-box-shadow: 0px 0px 8px  #999;
+    box-shadow: 0px 0px 8px  #999;
+}
+
+.fuzzy-search-result{
+    margin: auto;
+    margin-top: 5px;
+
+    height: 20px;
+    width: 90%;
+
+    line-height: auto;
+    font-size: 13px;
+
+    cursor: pointer;
+
+    color: rgb(76,76,76);
+}
+
+.fuzzy-search-result10{
+    margin-bottom: 8px;
 }
 
 .search-subway-result-contanier{
-    display: block;
+    display: none;
     position: fixed;
     overflow: auto;
 
@@ -251,7 +314,6 @@ input::-webkit-input-placeholder {
     height: 62%;
     width: 23%;
     
-
     -webkit-box-shadow: 0px 0px 8px  #999;
     -moz-box-shadow: 0px 0px 8px  #999;
     box-shadow: 0px 0px 8px  #999;
@@ -261,7 +323,6 @@ input::-webkit-input-placeholder {
 
 .search-subway-result-contanier::-webkit-scrollbar {
     width: 7px;    
-    /*height: 4px;*/
 }
 .search-subway-result-contanier::-webkit-scrollbar-thumb {
     border-radius: 8px;
@@ -336,7 +397,12 @@ input::-webkit-input-placeholder {
     bottom: 0;
     right: 12.5%;
 
-    height: 2.1px;
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+    border-bottom-left-radius: 1px;
+    border-bottom-right-radius: 1px;
+
+    height: 2.4px;
     width: 75%;
 
     background-color: rgb(230,230,230);
@@ -360,13 +426,16 @@ input::-webkit-input-placeholder {
 .subway-information-show{
     margin: auto;
     margin-top: 8px;
-    padding-top: 5%;
+    margin-bottom: 8px;
     padding-left: 0;
-    display: block;
     padding-top: 0;
-    height: 25px;
+
+    display: block;
+    
+    height: 13px;
     width: 87%;
-    color: rgb(77,77,77);
+
+    color: rgb(77,77,79);
 }
 
 .subway-route-show{
@@ -376,23 +445,17 @@ input::-webkit-input-placeholder {
 .information_li{
     float: left;
 
-    height: 70%;
+    margin-right: 5px;
+    padding-right: 5px;
+
+    height: 100%;
+    width: auto;
 
     list-style: none;
-    font-size: 13px;
+    line-height: 13px;
+    font-size: 11px;
+
     color: rgb(77,77,77);
-}
-
-.kilomile{
-    width: 20%;
-}
-
-.time,.price{
-    width: 18%;
-}
-
-.walk{
-    width: 28%; 
 }
 
 .time,.kilomile,.walk{
@@ -459,6 +522,9 @@ input::-webkit-input-placeholder {
 }
 
 .demonstrate-detail-travel-way{
+    display: none;
+    position: relative;
+
     margin: auto;
     clear:both;
     
@@ -470,6 +536,7 @@ input::-webkit-input-placeholder {
 
 .start-site{
     margin: auto;
+    margin-top: 2px;
 
     height: 100%;
     width: 87%;
@@ -532,13 +599,14 @@ input::-webkit-input-placeholder {
 
 .demonstrate-subway-detail-informations{
     display: inline-block;
+    position: relative;
 
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 
-    height: 80px;
+    height: auto;
     width: 91%;
 
     background-color: rgb(198,222,208);
@@ -549,12 +617,84 @@ input::-webkit-input-placeholder {
 .subway-name{
     height: 20px;
     width: 100%;
-
-    
-    
-    
+  
     font-size: 12px;
-    line-height: 20px;
+    line-height: 20px;   
+}
 
+.notice-destination-icon-contanier{
+    height: 20px;
+    width: 100%;
+
+    margin-bottom: 6px;
+}
+
+.notice-destination-icon{
+    display: inline-block;
+
+    height: 20px;
+    width: 20px;
+
+    border-radius:50px;
     
+    text-align: center;
+    color: #ffffff;
+    line-height: 20px;
+    font-size: 12px;
+
+    background-color: rgb(110,92,236);
+}
+
+.destination-site-name{
+    display: inline-block;
+
+    height: 100%;
+    width: 90%;
+
+    margin-left: 4px; 
+
+    color: rgb(97,103,101);
+    line-height: 20px;
+    font-size: 12px;
+}
+
+.station-number{
+    position: absolute;
+    right: 15px;
+    top:50%;
+
+    height: 15px;
+    width: 25px;
+
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    color: rgb(110,92,236);
+}
+
+.station-number-icon{
+    position: absolute;
+    right: 0;
+    top:50%;
+
+    height: 15px;
+    width: 15px;
+    
+    background-image: url(../images/xiala.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%; 
+    
+    cursor: pointer;
+}
+
+.two-stage-expansion{
+    display: none;
+
+    height: 40px;
+    width: 100%;
+
+    font-size: 11px;
+    line-height: 20px;
+    color: rgb(146,151,147);
 }
