@@ -4,71 +4,119 @@ define(['require','tools'],function(require) {
     });
     var tools = require('tools');
     // 创建地图实例  
-    var point = new BMap.Point(113.40085066839228, 23.064408982302982);
+    var point = new BMap.Point(113.256122,23.043909);
     // 创建点坐标  
     map.centerAndZoom(point, 15);
     map.enableScrollWheelZoom(true);
 
     //从描述获得地铁坐标
-    // var departure_point = new BMap.Geocoder();
-    // var desination_point = new BMap.Geocoder();
-    
+    var departure_point = new BMap.Geocoder();
+    var desination_point = new BMap.Geocoder();
+   
+   
     // departure_point.getPoint($(".departure-input").val(), function(point){      
     //     if (point) {      
     //         console.log(point);
+    //         console.log($(".departure-input").val());
+    //         departure_x = point.lng;
+    //         departure_y = point.lat;
+    //         console.log(departure_x);
+    //         console.log(departure_y)
     //     }else {
     //         alert("请输入广州市内的地点")
     //     }      
     //  },"广州市");
 
-    // desination_point.getPoint("大学城南站", function(point){      
+    // desination_point.getPoint($(".destination-input").val().toString(), function(point){      
     //     if (point) {      
     //         console.log(point);
+    //         console.log($(".departure-input").val());
+    //         destination_x = point.lng;
+    //         destination_y = point.lat;
+    //         console.log(destination_x)
+    //         console.log(destination_y)
     //     }else {
     //         alert("请输入广州市内的地点")
     //     }            
     // },"广州市");
-
+    var set_x ;
+    var set_y ;
+    var end_x ;
+    var end_y ;
+    var flag1 = 0,flag2 = 0;
        
-var marker = new BMap.Marker(new BMap.Point(113.40640893373343,23.049620735802392));        // 创建标注    
-map.addOverlay(marker);
-
     $(function() {
         $(".search-button").click(function() {
-           // console.log($(".departure-input").val())
-           // console.log($(".destination-input").val())
-           if(tools.verificat.isNotNullTrim($(".destination-input").val()) && tools.verificat.isNotNullTrim($(".departure-input").val())){
-            $.post("http://192.168.31.89:8080/todo/api/v1.0/route", {
-                departure: departure_point,
-                destination: desination_point          
-               }, function(data, textStatus) {
-                    document.getElementsByClassName("search-subway-result-contanier")[0].display = "block";
-                    document.getElementsByClassName("filled-container")[0].display = "none";
-                    var position;//JSON数组用来接受传过来的坐标信息
-                    console.log(data);
-                    position = data;  
-                    showroute(position);
-                    clearimg();
-                    addrouteway(position);
-                    addinformation(position);                   
-               })
-           }else {
-                alert("请检查你的输入是否正确");
-           }
+            departure_point.getPoint(document.getElementsByClassName("departure-input")[0].value, function(point){      
+                if (point) {                     
+                    set_x = point.lng;                  
+                    set_y = point.lat;                    
+                    flag1 = 1;
+
+                    if(flag1==1&&flag2==1) {
+                        console.log("执行了出发函数") 
+                        flag1 = 0;
+                        flag2 = 0;                  
+                        $.post("http://192.168.31.89:8080/todo/api/v1.0/route", {
+                            departure_x: set_x,
+                            departure_y: set_y,
+                            destination_x: end_x,
+                            destination_y: end_y                      
+                        }, function(data, textStatus) {
+
+                        document.getElementsByClassName("fuzzy-search")[0].style.display = "none";
+                        document.getElementsByClassName("filled-container")[0].style.display = "none";
+                        document.getElementsByClassName("search-subway-result-contanier")[0].style.display = "block";
+                        document.getElementsByClassName("recommendation-choose-way-detail")[0].color = "rgb(rgb(109,92,232))"
+                        var position;               
+                        console.log(data);
+                        position = data;  
+                        showroute(position);
+                        clearimg();
+                        addrouteway(position);
+                        addinformation(position);                   
+                    })
+                    }
+                }else {
+                    alert("请输入广州市内的地点")
+                }      
+             },"广州市");
+
+             desination_point.getPoint(document.getElementsByClassName("destination-input")[0].value, function(point){      
+                if (point) {                     
+                   end_x = point.lng;                  
+                    end_y = point.lat;
+                    flag2 = 1;
+                    if(flag1==1 && flag2==1){
+                        console.log("执行了结束函数") 
+                        flag1 = 0;
+                        flag2 = 0;                      
+                        $.post("http://192.168.31.89:8080/todo/api/v1.0/route", {
+                        departure_x: set_x,
+                        departure_y: set_y,
+                        destination_x: end_x,
+                        destination_y: end_y                      
+                    }, function(data, textStatus) {                      
+                        document.getElementsByClassName("fuzzy-search")[0].style.display = "none";
+                        document.getElementsByClassName("filled-container")[0].style.display = "none";
+                        document.getElementsByClassName("search-subway-result-contanier")[0].style.display = "block"; 
+                        var position;               
+                        console.log(data);
+                        position = data;  
+                        showroute(position);
+                        clearimg();
+                        addrouteway(position);
+                        addinformation(position);                   
+                })
+                }
+                }else {
+                    alert("请输入广州市内的地点")
+                }      
+             },"广州市");
+             
            
         });
     })
-
-    
-    // //改变折现样式
-    // var test_polyline = new BMap.Polyline([  
-    //     new BMap.Point(113.28438, 23.00025),  
-    //     new BMap.Point(113.276129, 22.99508), 
-    //     new BMap.Point(113.2999, 23.040015) 
-    //   ],  
-    //   {strokeColor:"red", strokeWeight:6, strokeOpacity:0.5}  
-    //  );  
-    //  map.addOverlay(test_polyline); 
 
     //规划路线  
     // function showroute(position) {
@@ -148,20 +196,15 @@ map.addOverlay(marker);
     //     }
                    
     // }
-    function showroute(position) {      
+    function showroute(position) { 
         Clear();
-
         for(var n = 0; n < position.length; n++) {    
             for(var key in position[n]) {
                 if(key == "z_route") {
                     var array_store_instance = new Array(position[n][key].length);//用来存储多个创建的实例
                     for(var i = 0; i < position[n][key].length; i++) {
-                        console.log(position[n][key][i]);
-                        console.log(i+1)
                         //console.log(array_store_instance[i]);
-                        array_store_instance[i] = new BMap.Point(position[n].z_route[i].x,position[n].z_route[i].y);
-                        console.log(array_store_instance[i]);
-                        
+                        array_store_instance[i] = new BMap.Point(position[n].z_route[i].x,position[n].z_route[i].y);                       
                     } 
                 }
             }
@@ -187,13 +230,21 @@ map.addOverlay(marker);
     function addrouteway(json_information) {
         var information_contanier = document.getElementsByClassName("show-subway-search-result");
         var k = 0;
-        
     
         for(var i = 0; i < json_information.length; i++){
             for(var key in json_information[i]){           
-                while(key == "line_" + k){                                          
-                    information_contanier[i].getElementsByClassName("subway-route-show")[0].innerHTML += "<img src='../images/subway.png' style='height: 11px;width:'25px';margin-right: '5px'></img>" + json_information[i][key] + ">";
-                    k++;                             
+                while(key == "line_" + k){                   
+                    if(json_information[i][key] != "null") {
+                        if(json_information[i][key] != "公交") {
+                            information_contanier[i].getElementsByClassName("subway-route-show")[0].innerHTML += "<img src='../images/subway.png' style='height: 11px;width:'25px';margin-right: '5px'></img>" + "&nbsp" + "&nbsp" + json_information[i][key] + ">";
+                            k++;
+                        }else {
+                            information_contanier[i].getElementsByClassName("subway-route-show")[0].innerHTML += "<img src='../images/bus.png' style='height: 11px;width:'25px';margin-right: '5px'></img>" + "&nbsp" + "&nbsp" + json_information[i][key] + ">";
+                            k++;
+                        }                         
+                    }else {
+                        break;
+                    }                                                             
                 }                                                                                                      
             } 
             k=0;                      
@@ -215,10 +266,7 @@ map.addOverlay(marker);
     
         for(let i = 0; i < json_information.length; i++) {
             information_contanier[i].style.display = "block";
-            for(var j in json_information[i]){
-                console.log(json_information[i][j]);
-                
-                
+            for(var j in json_information[i]){                         
                 if(j == "mile" || j == "price" || j == "walk" || j == "time"){
                     information_contanier[i].getElementsByClassName("information_li")[k++].innerHTML = json_information[i][j];
                 }
@@ -254,24 +302,27 @@ map.addOverlay(marker);
         $(".clear-route-button").click(function() {
             if(tools.verificat.isNotNullTrim($(".destination-input").val() || tools.verificat.isNotNullTrim($(".departure-input").val()))) {
                 $(".destination-input").val("");
-                $(".departure-input").val("");          
-            }else{
-                alert("输入为空，无法取消");
+                $(".departure-input").val("");
+                for(var i = 0; i< document.getElementsByClassName("fuzzy-search-result").length; i++) {
+                    document.getElementsByClassName("fuzzy-search-result")[i].innerHTML = "";
+                }
+                document.getElementsByClassName("fuzzy-search")[0].style.display = "none";
+                document.getElementsByClassName("search-subway-result-contanier")[0].style.display = "none";           
             }
             Clear();
         });
     });
-// var point1 = new BMap.Point(113.25705998, 23.11334599);    
-// var marker = new BMap.Marker(point1);        // 创建标注    
-// map.addOverlay(marker);  
+var point1 = new BMap.Point(113.256122,23.043909);    
+var marker = new BMap.Marker(point1);        // 创建标注    
+map.addOverlay(marker);  
 
-// var point1 = new BMap.Point(113.25705998, 23.11334599);    
-// var marker = new BMap.Marker(point1);        // 创建标注    
-// map.addOverlay(marker);  
+var point2 = new BMap.Point(113.254932,23.044833);    
+var marker = new BMap.Marker(point2);        // 创建标注    
+map.addOverlay(marker);  
 
-// var point1 = new BMap.Point(113.25705998, 23.11334599);    
-// var marker = new BMap.Marker(point1);        // 创建标注    
-// map.addOverlay(marker);  
+var point1 = new BMap.Point(113.25705998, 23.11334599);    
+var marker = new BMap.Marker(point1);        // 创建标注    
+map.addOverlay(marker);  
 
 // var test_polyline = new BMap.Polyline([  
 //     new BMap.Point(113.28438, 23.00025),  
@@ -368,7 +419,7 @@ map.addOverlay(marker);
             "onSearchComplete": function(data) {
                 ac.hide();
                 start_site_result_container.style.display = "block";
-                document.getElementsByClassName("search-subway-result-contanier")[0].display = "none";
+                document.getElementsByClassName("search-subway-result-contanier")[0].style.display = "none";              
                 for(var i =0; i < 10 ; i++){
                     start_site_container[i].innerHTML = "<img src='../images/位置.png' style='vertical-align:text-bottom;height: 14px;width: 14px;margin-right:4px'/>" + ac.getResults().Qq[i].city + ac.getResults().Qq[i].district + ac.getResults().Qq[i].street + ac.getResults().Qq[i].business;
                 }
@@ -380,7 +431,7 @@ map.addOverlay(marker);
                         locationinstance = cutinnerhtml(this.innerHTML.toString());
                         console.log($(".departure-input").val());
                         console.log(locationinstance); 
-                        document.getElementsByClassName("departure-input")[0].value = locationinstance;             
+                        document.getElementsByClassName("departure-input")[0].value = locationinstance;                                       
                     }           
                     
                 }
@@ -394,7 +445,7 @@ map.addOverlay(marker);
             "onSearchComplete": function(data) {
                 ac1.hide();
                 start_site_result_container.style.display = "block";
-                document.getElementsByClassName("search-subway-result-contanier")[0].display = "none";
+                document.getElementsByClassName("search-subway-result-contanier")[0].style.display = "none";
                 for(var i =0; i < 10 ; i++){
                     start_site_container[i].innerHTML = "<img src='../images/位置.png' style='vertical-align:text-bottom;height: 14px;width: 14px;margin-right:4px'/>" + ac1.getResults().Qq[i].city + ac1.getResults().Qq[i].district + ac1.getResults().Qq[i].street + ac1.getResults().Qq[i].business;
                 }
@@ -406,7 +457,10 @@ map.addOverlay(marker);
                         locationinstance = cutinnerhtml(this.innerHTML.toString());
                         console.log($(".departure-input").val());
                         console.log(locationinstance); 
-                        document.getElementsByClassName("destination-input")[0].value = locationinstance;             
+                        document.getElementsByClassName("destination-input")[0].value = locationinstance;
+                       
+                        
+                                    
                     }           
                     
                 }
@@ -419,13 +473,17 @@ map.addOverlay(marker);
             return a;
         }            
     }
+    //当失去焦点的时候也清空
+    
+
     searchroutename();
 
     function getBoundary(){       
 		var bdary = new BMap.Boundary();
-		bdary.get("广州市", function(rs){       //获取行政区域
+		bdary.get("广州市荔湾区", function(rs){       //获取行政区域
 			map.clearOverlays();        //清除地图覆盖物       
-			var count = rs.boundaries.length; //行政区域的点有多少个
+            var count = rs.boundaries.length; //行政区域的点有多少个
+            console.log(count)
 			if (count === 0) {
 				alert('未能获取当前输入行政区域');
 				return ;
@@ -437,40 +495,15 @@ map.addOverlay(marker);
 				pointArray = pointArray.concat(ply.getPath());
 			}    
 			map.setViewport(pointArray);    //调整视野  
-			addlabel();               
+			               
 		});   
+    }
+       
+    function showInfo(e){
+		alert(e.point.lng + ", " + e.point.lat);
 	}
-
-	setTimeout(function(){
-		getBoundary();
-	}, 2000);
-
-	function addlabel() {
-	    var pointArray = [
-	      new BMap.Point(121.716076,23.703799),
-	      new BMap.Point(112.121885,14.570616),
-	      new BMap.Point(123.776573,25.695422)];
-	    var optsArray = [{},{},{}];
-	    var labelArray = [];
-	    var contentArray = [
-	      "台湾是中国的！",
-	      "南海是中国的！",
-	      "钓鱼岛是中国的！"];
-	    for(var i = 0;i < pointArray.length; i++) {
-	      optsArray[i].position = pointArray[i];
-	      labelArray[i] = new BMap.Label(contentArray[i],optsArray[i]);
-	      labelArray[i].setStyle({
-			color : "red",
-			fontSize : "12px",
-				 height : "20px",
-				 lineHeight : "20px",
-				 fontFamily:"微软雅黑"
-			 });
-	      map.addOverlay(labelArray[i]);
-	    }	  
-	}
-
- 
+    map.addEventListener("click", showInfo);
+    
     return{
         map: map
     }

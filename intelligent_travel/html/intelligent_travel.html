@@ -18,15 +18,19 @@
     <!-- 搜索框 -->
     <div class="search-block">
         <div class="select-visitor-contanier">
-            <select class="visitor-type" style="text-align-last:center;">
-                <option value="person" class="visitor-type-detail" hidden style="color:rgb(184,184,184);">出行类型&nbsp&nbsp&nbsp∨</option>
-                <option value="person" class="visitor-type-detail">个人出行</option>
-                <option value="business" class="visitor-type-detail">商务办公</option>
-                <option value="family" class="visitor-type-detail">家庭出行</option>
-                <option value="none" class="visitor-type-detail">其他</option>
-            </select>
-
-                    
+            出行类型
+            <div class="show-visitor-type"></div>                 
+        </div>
+        <div class="show-visitor-type-contaniner">
+            <div class="show-visitor">个人出行
+                    <div class="shangla-arrow"></div>
+            </div>
+            <div class="show-visitor-line"></div>
+            <div class="show-visitor">商务出行</div>
+            <div class="show-visitor-line"></div>
+            <div class="show-visitor">家庭出行</div>
+            <div class="show-visitor-line"></div>
+            <div class="show-visitor">其他</div>
         </div>
 
         <div class="input-part-container">
@@ -45,12 +49,11 @@
         
         <div class="button-container">
             <div class="clear-route-button">清除路线</div>
-
             <input type="button" class="search-button" value="搜索">
         </div>
     </div>
 
-    <!-- 模糊搜索展示 暂时不知道怎么做 -->
+    <!-- 模糊搜索展示 -->
     <div class="filled-container"></div>
     <div class="fuzzy-search" id="fuzzy-search-result">
         <div class="fuzzy-search-result"></div>
@@ -99,55 +102,62 @@
         </div>
         <!-- 下拉展示具体信息模块 -->
         <div class="demonstrate-detail-travel-way">          
-            <div class="start-site">
-                    <div class="notice-set-up-icon">起</div>
-    
-                    <div class="start-site-name">广东工业大学(大学城校区)</div>
-                    <div class="go-to-site-route">步行1.5公里至于大学城南 (约22分钟)</div>
-            
-                    <div class="place-photo-position"></div>
-                    <div class="demonstrate-subway-detail-informations" id="fuck">
-                        <div class="subway-name" style="color: rgb(39,135,74)">地铁四号线</div>
-                        <div class="subway-name"><span style="color: rgb(97,103,101)">大学城南</span><span style="color: rgb(146,151,147);font-size: 9px">上车</span><span style="color: rgb(146,151,147);font-size: 9px">(B口进)</span></div>
-                        <div class="two-stage-expansion">
-                            大学城北<br>
-                            官洲
-                        </div>                     
-                        <div class="subway-name"><span style="color: rgb(97,103,101)">万胜围</span><span style="color: rgb(146,151,147);font-size: 9px">下车</div>
-                        <div class="subway-name" style="color: rgb(146,151,147);font-size: 10px">上车站 首: 06:02 末: 23:22 约6分钟/趟</div>
-
-                        <div class="station-number">3站</div>
-                        <div class="station-number-icon"></div>
-                        
-                    </div>
-
-                    <div class="go-to-site-route">步行1.5公里至于大学城南 (约22分钟)</div>
-                    <div class="place-photo-position"></div>
-                    <div class="demonstrate-subway-detail-informations" style="background-color: rgb(197,227,229)">
-                        <div class="subway-name" style="color: rgb(5,152,162)">地铁八号线</div>
-                        <div class="subway-name"><span style="color: rgb(97,103,101)">万胜围</span><span style="color: rgb(146,151,147);font-size: 9px">上车</span><span style="color: rgb(146,151,147);font-size: 9px">(B口进)</span></div>
-                        <div class="two-stage-expansion">
-                            琶洲<br>
-                            新港东
-                        </div>
-                        <div class="subway-name"><span style="color: rgb(97,103,101)">万客村</span><span style="color: rgb(146,151,147);font-size: 9px">下车</div>
-                        <div class="subway-name" style="color: rgb(146,151,147);font-size: 10px">上车站 首: 06:02 末: 23:22 约6分钟/趟</div>
-                    
+                <div class="start-site">
+                        <div class="notice-set-up-icon">起</div>
                             
-                        <div class="station-number">5站</div>
-                        <div class="station-number-icon"></div>
-                    
-                    </div>
-                  
-                    <div class="notice-destination-icon-contanier">
-                        <div class="notice-destination-icon">终</div>
-                        <div class="destination-site-name">花城汇</div>
-                    </div>                  
-            </div>
-                <div class="sperate-line"></div>                   
+                        <div class="start-site-name"></div>
+                    <div class="demonstrate-subway-detail-informations-innerhtml">   
+                        <!-- <div class="go-to-site-route">步行1.5公里至于大学城南 (约22分钟)</div>
+                
+                        <div class="place-photo-position"></div>
+                        <div class="demonstrate-subway-detail-informations">
+                            <div class="subway-name" style="color: rgb(39,135,74)">地铁四号线</div>
+                            <div class="subway-name"><span style="color: rgb(97,103,101)">大学城南</span><span style="color: rgb(146,151,147);font-size: 9px">上车</span><span style="color: rgb(146,151,147);font-size: 9px">(B口进)</span></div>
+                            <div class="two-stage-expansion">
+                                    
+                            </div>     
+                            <div class="subway-name"><span style="color: rgb(97,103,101)">万胜围</span><span style="color: rgb(146,151,147);font-size: 9px">下车</div>
+                            <div class="subway-name" style="color: rgb(146,151,147);font-size: 10px">上车站 首: 06:02 末: 23:22 约6分钟/趟</div>
+    
+                            <div class="station-number">3站</div>
+                            <div class="station-number-icon"></div>
+                            
+                        </div>
+    
+                        <div class="go-to-site-route">步行1.5公里至于大学城南 (约22分钟)</div>
+                        <div class="place-photo-position"></div>
+                        <div class="demonstrate-subway-detail-informations">
+                            <div class="subway-name" style="color: rgb(39,135,74)">地铁四号线</div>
+                            <div class="subway-name"><span style="color: rgb(97,103,101)">大学城南</span><span style="color: rgb(146,151,147);font-size: 9px">上车</span><span style="color: rgb(146,151,147);font-size: 9px">(B口进)</span></div>
+                            <div class="subway-name"><span style="color: rgb(97,103,101)">万胜围</span><span style="color: rgb(146,151,147);font-size: 9px">下车</div>
+                            <div class="subway-name" style="color: rgb(146,151,147);font-size: 10px">上车站 首: 06:02 末: 23:22 约6分钟/趟</div>
+                        
+                                
+                            <div class="station-number">3站</div>
+                            <div class="station-number-icon"></div>
+                        
+                        </div>
+    
+                        <div class="go-to-site-route">步行1.5公里至于大学城南 (约22分钟)</div>
+                        <div class="place-photo-position"></div>
+                        <div class="demonstrate-subway-detail-informations">
+                            <div class="subway-name" style="color: rgb(39,135,74)">地铁四号线</div>
+                            <div class="subway-name"><span style="color: rgb(97,103,101)">大学城南</span><span style="color: rgb(146,151,147);font-size: 9px">上车</span><span style="color: rgb(146,151,147);font-size: 9px">(B口进)</span></div>
+                            <div class="subway-name"><span style="color: rgb(97,103,101)">万胜围</span><span style="color: rgb(146,151,147);font-size: 9px">下车</div>
+                            <div class="subway-name" style="color: rgb(146,151,147);font-size: 10px">上车站 首: 06:02 末: 23:22 约6分钟/趟</div>
+                                               
+                            <div class="station-number">3站</div>
+                            <div class="station-number-icon"></div>
+                        </div>
+                        <div class="go-to-site-route">步行1.5公里至于大学城南 (约22分钟)</div> -->
+                </div>  
+                        <div class="notice-destination-icon-contanier">
+                            <div class="notice-destination-icon">终</div>
+                            <div class="destination-site-name"></div>
+                        </div>                  
+                </div>
+                    <div class="sperate-line"></div>                   
         </div>
-
-
 
 
         <div class="show-subway-search-result show-subway-search-result2">

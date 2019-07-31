@@ -47,11 +47,30 @@ body{
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 0.8rem;
+
+    text-align: center;
+    color: rgb(207,207,207);
+    line-height: 24px;
+    font-size: 13px;
+    
+    background-color: rgb(245,245,245);
     
     height: 13%;
     width: 90%;
 
     
+}
+
+.shangla-arrow{
+    float: right;
+    margin-right: 5px;
+    height: 100%;
+    width: 7%;
+
+    background-image: url(../images/shouqi.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
 }
 
 .search-block{
@@ -73,27 +92,61 @@ body{
     list-style: none;
 }
 
-.visitor-type{
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+.show-visitor-type{
+    float: right;
+
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 
-    border: 0;
-  
     height: 100%;
-    width: 100%;
+    width: 7%;
 
-    appearance:none;  
-    -moz-appearance:none;  
-    -webkit-appearance:none;   
-    outline:none;
+    cursor: pointer;
+
+    background-color: rgb(245,245,245);
+    background-image: url(../images/xiala.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
 }
 
-option{
-    color:rgb(184,184,184);
-    
-    text-align:center;  
+.show-visitor-type-contaniner{
+    z-index: 10;
+    position: absolute;
+    display: none;
+    left: 5%;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    cursor: pointer;
+
+    height:110px;
+    width: 90%;
+
+    background-color:rgb(245,245,245);
+}
+
+.show-visitor-line{
+    height: 2px;
+    width: 85%;
+    margin-left: 6px;
+
+    background-color: rgb(230, 230, 230);
+}
+
+.show-visitor{
+    height: 25.5px;
+    width: 100%;
+
+    padding-left: 6px;
+
+    color: rgb(92,92,92);
+
+    font-size: 13px;
+    line-height: 25.5px;
 }
 
 .shrink{
@@ -105,7 +158,12 @@ option{
     width: 6%;
 
     border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;    
+    border-bottom-right-radius: 5px;
+    
+    background-image: url(../images/transfor.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
 }
 
 .input-part-container{
@@ -246,6 +304,7 @@ input::-webkit-input-placeholder {
 }
 
 .filled-container{
+    display: none;
     position: absolute;
     left: 1.5rem;
     top: 31%;
@@ -254,9 +313,11 @@ input::-webkit-input-placeholder {
     height: 1%;
     width: 23%;
 
+    border-bottom: 0;
+
     border: 0;
     
-    background-color:white;
+    background-color:rgb(245,245,245);
 }
 
 .fuzzy-search{
@@ -282,10 +343,10 @@ input::-webkit-input-placeholder {
 }
 
 .fuzzy-search-result{
+    display: block;
     margin: auto;
-    margin-top: 5px;
+    padding-top: 5px;
 
-    height: 20px;
     width: 90%;
 
     line-height: auto;
@@ -301,7 +362,7 @@ input::-webkit-input-placeholder {
 }
 
 .search-subway-result-contanier{
-    display: none;
+    display: block;
     position: fixed;
     overflow: auto;
 
@@ -691,10 +752,15 @@ input::-webkit-input-placeholder {
 .two-stage-expansion{
     display: none;
 
-    height: 40px;
+    height: auto;
     width: 100%;
 
     font-size: 11px;
     line-height: 20px;
     color: rgb(146,151,147);
+}
+
+.demonstrate-subway-detail-informations-innerhtml{
+    height: auto;
+    width: 100%;
 }
